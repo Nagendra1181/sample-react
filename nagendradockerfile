@@ -8,4 +8,5 @@ FROM nginx:mainline-trixie-perl
 LABEL project=nodejsproject
 LABEL author=nagendra
 COPY --from=build /codefiles /nagendra
+RUN mv /nagendra  /usr/share/nginx/html
 EXPOSE 80
