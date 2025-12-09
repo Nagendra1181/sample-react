@@ -1,0 +1,11 @@
+FROM node:lts-trixie AS Build 
+ADD . /codefiles
+WORKDIR /codefiles
+RUN npm install && /
+    npm run build
+
+FROM nginx:mainline-trixie-perl
+LABEL project=nodejsproject
+LABEL author=nagendra
+COPY --from=build /codefiles /nagendra
+EXPOSE 80
